@@ -150,6 +150,7 @@ document.addEventListener('DOMContentLoaded',() => {
     // Allow users to submit new messages
     newMessageForm.addEventListener('submit', event => {
         event.preventDefault();
+        console.log(apiUrl)
         fetch(`${apiUrl}/messages`,{
             method: 'POST',
             headers: {
@@ -162,7 +163,9 @@ document.addEventListener('DOMContentLoaded',() => {
             })
         })
         .then(response => response.json())
-        .then(messageObject => renderMessage(messageObject))
+        .then(messageObject => {
+            console.log(messageObject)
+            renderMessage(messageObject)})
 
         newMessageForm.reset();
     })
